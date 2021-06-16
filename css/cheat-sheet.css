@@ -3,5 +3,11 @@ h1 {
 }
 
 body {
+    display: flex;
+    justify-content: center; 
     background-color: blueviolet;
+}
+
+table {
+    border: 1px solid black;
 }
