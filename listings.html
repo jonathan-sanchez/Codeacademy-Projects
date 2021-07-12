@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+
+</head>
+<body>
+<!-- <style>
+    select, input, button {
+        margin-bottom: 1em;
+        padding: .25em;
+        border: 0;
+        border-bottom: 2px solid currentcolor;
+        font-weight: bold;
+        letter-spacing: .15em;
+        border-radius: 0;
+    &:focus, &:active {
+                  outline: 0;
+                  border-bottom-color: red;
+              }
+	{}
+</style> -->
+<div class="container no-gutters border">
+	<h3 align="center">Find lost property:</h3>
+	<h5>Filter your search:</h5>
+<!--Search filter-->
+
+		<form th:action="@{/listings}" method="get">
+			<div class="container-fluid border">
+				<div class="row border align-items-center">
+
+<!--Location dropdown-->
+						<label for="locations">Filter a location:</label>
+						<select class="col" id="locations" data-selected="">
+							<option  value="null" selected="selected" disabled="disabled">Select a location</option>
+							<th:block th:each="location : ${locations}">
+								<option th:value="${location.id}"><span th:text="${location.location_name}"></span></option>
+							</th:block>
+						</select>
+
+						<select class="col" id="categories" data-selected="">
+							<option value="null" selected="selected" disabled="disabled">Select a category:</option>
+							<th:block th:each="category : ${categories}">
+								<option th:value="${category.id}"><span th:text="${category.property_type}"></span></option>
+							</th:block>
+						</select>
+					<div class="row border align-items-center">
+						<input class="col" id="dateFound" type="date" name="date_found">
+						<button class="col" type="submit">Filter</button>
+					</div>
+				</div>
+			</div>
+</body>
+</html>
